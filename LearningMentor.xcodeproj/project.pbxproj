@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		4697B2932D434B1500B61B94 /* Exceptions for "LearningMentor" folder in "LearningMentor" target */ = {
+		4664544F2D499C6B00915A90 /* Exceptions for "LearningMentor" folder in "LearningMentor" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		4697B2682D4334FD00B61B94 /* LearningMentor */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				4697B2932D434B1500B61B94 /* Exceptions for "LearningMentor" folder in "LearningMentor" target */,
+				4664544F2D499C6B00915A90 /* Exceptions for "LearningMentor" folder in "LearningMentor" target */,
 			);
 			path = LearningMentor;
 			sourceTree = "<group>";
@@ -104,6 +104,8 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
+				fr,
 			);
 			mainGroup = 4697B25D2D4334FD00B61B94;
 			minimizedProjectReferenceProxies = 1;
