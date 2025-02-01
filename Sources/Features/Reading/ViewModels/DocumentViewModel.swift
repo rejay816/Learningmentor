@@ -139,34 +139,14 @@ public class DocumentViewModel: ObservableObject {
         do {
             let fileType = url.pathExtension.lowercased()
             let fileName = url.lastPathComponent
-            let documentId = UUID()
             
             let document: Document
             switch fileType {
-            case "pdf":
-                guard let pdfDocument = PDFDocument(url: url) else {
-                    throw DocumentError.invalidPDF
-                }
-                document = Document(
-                    id: documentId,
-                    url: url,
-                    title: fileName,
-                    type: .pdf(pdfDocument),
-                    content: .pdf(pdfDocument)
-                )
-                
-            case "txt", "rtf":
+            case "txt":
                 guard let text = try? String(contentsOf: url, encoding: .utf8) else {
                     throw DocumentError.invalidTextEncoding
                 }
-                let documentType: DocumentType = fileType == "rtf" ? .richText(nil) : .plainText(text)
-                document = Document(
-                    id: documentId,
-                    url: url,
-                    title: fileName,
-                    type: documentType,
-                    content: .text(text)
-                )
+                document = Document(content: text, title: fileName)
                 
             default:
                 throw DocumentError.invalidDocument

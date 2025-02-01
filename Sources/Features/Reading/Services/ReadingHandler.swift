@@ -26,10 +26,10 @@ public class ReadingHandler {
     
     public func open(_ document: Any) {
         guard let textDocument = document as? NSDocument else { return }
-        NotificationCenter.default.post(
-            name: .documentOpened,
-            object: textDocument.fileURL,
-            userInfo: ["type": "reader"]
-        )
+        // NotificationCenter.default.post(
+        //     name: .documentOpened,
+        //     object: textDocument.fileURL,
+        //     userInfo: ["type": "reader"]
+        // )
     }
 } 
