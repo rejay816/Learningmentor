@@ -18,18 +18,20 @@ public class ReadingHandler {
             "xml",
             "md",
             "txt",
-            "pdf"  // 添加 PDF 支持
+            "pdf"
         ]
         
         return supportedTypes.contains(fileType.lowercased())
     }
     
     public func open(_ document: Any) {
-        guard let textDocument = document as? NSDocument else { return }
-        // NotificationCenter.default.post(
-        //     name: .documentOpened,
-        //     object: textDocument.fileURL,
-        //     userInfo: ["type": "reader"]
-        // )
+        if document is NSDocument {
+            // 实现文档打开逻辑
+            // NotificationCenter.default.post(
+            //     name: .documentOpened,
+            //     object: document,
+            //     userInfo: ["type": "reader"]
+            // )
+        }
     }
 } 

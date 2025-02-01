@@ -1,6 +1,8 @@
 import Foundation
 import AppKit
+import UniformTypeIdentifiers
 
+@MainActor
 public final class FileHandler {
     // MARK: - Properties
     
@@ -13,14 +15,14 @@ public final class FileHandler {
     // MARK: - Public Methods
     
     public func openFile() async throws -> URL {
-        let panel = NSOpenPanel()
+        let panel = await NSOpenPanel()
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.allowedContentTypes = [.pdf, .plainText, .rtf]
         
-        guard await panel.beginSheetModal() == .OK,
-              let url = panel.url else {
+        guard await panel.beginSheetModal(for: NSApp.keyWindow ?? NSWindow()) == .OK,
+              let url = await panel.url else {
             throw FileHandlerError.userCancelled
         }
         
@@ -28,18 +30,18 @@ public final class FileHandler {
     }
     
     public func importFiles() async throws -> [URL] {
-        let panel = NSOpenPanel()
+        let panel = await NSOpenPanel()
         panel.allowsMultipleSelection = true
         panel.canChooseDirectories = false
         panel.canChooseFiles = true
         panel.allowedContentTypes = [.pdf, .plainText, .rtf]
         
-        guard await panel.beginSheetModal() == .OK,
-              !panel.urls.isEmpty else {
+        guard await panel.beginSheetModal(for: NSApp.keyWindow ?? NSWindow()) == .OK,
+              !(await panel.urls).isEmpty else {
             throw FileHandlerError.userCancelled
         }
         
-        return panel.urls
+        return await panel.urls
     }
 }
 
